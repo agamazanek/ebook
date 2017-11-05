@@ -14,8 +14,8 @@ public class Main {
 //                System.out.println(args[i]);
 //            System.out.println(Arrays.toString(args));
             System.out.println(args[0]);
-            
-        } catch( ArrayIndexOutOfBoundsException e)
+
+        } catch (ArrayIndexOutOfBoundsException e)
 
         {
             System.out.println(e);
