@@ -1,6 +1,9 @@
 package pl.sda.ebook.Registration;
 
+import UserData.User;
+import UserData.UserDataBase;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -22,6 +25,15 @@ public class RegistrationControllerTest {
 
     }  @Test
     public void shouldNotCreateNewUser() {
+
+        Response loginResult = new RegistrationController().createUser("testUser1", "ss");
+
+        Assert.assertEquals(false, loginResult.isSuccess());
+
+
+    }@Test
+    public void shouldCheckIfUserExist() {
+        User user=new User();
 
         Response loginResult = new RegistrationController().createUser("testUser1", "ss");
 
