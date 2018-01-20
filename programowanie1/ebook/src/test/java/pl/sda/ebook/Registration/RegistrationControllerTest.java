@@ -20,6 +20,14 @@ public class RegistrationControllerTest {
         Assert.assertEquals(true, loginResult.isSuccess());
 
 
+    }  @Test
+    public void shouldNotCreateNewUser() {
+
+        Response loginResult = new RegistrationController().createUser("testUser1", "ss");
+
+        Assert.assertEquals(false, loginResult.isSuccess());
+
+
     }
     /**
      * data OK & user not exits
