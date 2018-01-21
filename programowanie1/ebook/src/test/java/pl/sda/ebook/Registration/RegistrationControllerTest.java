@@ -1,9 +1,6 @@
 package pl.sda.ebook.Registration;
 
-import UserData.User;
-import UserData.UserDataBase;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**

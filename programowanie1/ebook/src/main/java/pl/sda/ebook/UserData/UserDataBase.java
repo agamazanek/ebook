@@ -1,4 +1,4 @@
-package UserData;
+package pl.sda.ebook.UserData;
 
 import java.util.ArrayList;
 

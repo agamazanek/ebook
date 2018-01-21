@@ -1,9 +1,7 @@
 package pl.sda.ebook.Registration;
 
-import UserData.User;
-import UserData.UserDataBase;
-
-import java.util.ArrayList;
+import pl.sda.ebook.UserData.User;
+import pl.sda.ebook.UserData.UserDataBase;
 
 public class RegistrationController {
     private final UserDataBase userDataBase = new UserDataBase();

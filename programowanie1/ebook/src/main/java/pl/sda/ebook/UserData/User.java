@@ -1,4 +1,4 @@
-package UserData;
+package pl.sda.ebook.UserData;
 
 public class User {
     private String login;
@@ -8,4 +8,6 @@ public class User {
         this.login = login;
         this.password = password;
     }
+
+    public void add
 }
