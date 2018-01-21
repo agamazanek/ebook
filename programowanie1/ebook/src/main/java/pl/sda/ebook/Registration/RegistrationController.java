@@ -14,18 +14,18 @@ public class RegistrationController {
     public Response createUser(String testUser1, String passw1) {
 
         Response response = new Response();
-        if (passw1.length() < 3) {
+        if (userDataBase.checkUser(testUser1)) {
+            response.setMessage("User already exists");
+            response.setUserCreated(false);
+        } else if (passw1.length() < 3) {
             response.setMessage("Password too short");
             response.setUserCreated(false);
-            return response;
         } else {
             User user = new User(testUser1, passw1);
-            userDataBase.addUser(testUser1, passw1);
+            userDataBase.addUser(user);
             response.setMessage("user created");
             response.setUserCreated(true);
-            return response;
         }
+        return response;
     }
-
-
 }

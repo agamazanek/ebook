@@ -5,22 +5,14 @@ import java.util.HashMap;
 
 public class UserDataBase {
 
-        HashMap <String, String> users = new HashMap<String, String>();
-
-
-
-    public void addUser(String login, String passwd) {
-
-        users.put(login, passwd);
-
-    }
+    private HashMap <String, User> users = new HashMap<String, User>();
 
 
     public boolean checkUser(String login) {
-        if(users.containsKey(login)){
-            return true;
-        } else {
-            return false;
-        }
+        return users.containsKey(login);
+    }
+
+    public void addUser(User user) {
+        users.put(user.getLogin(), user);
     }
 }

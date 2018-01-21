@@ -9,10 +9,6 @@ import pl.sda.ebook.UserData.UserDataBase;
  * Unit test for simple App.
  */
 public class RegistrationControllerTest {
-    @Test
-    public void test() {
-        Assert.assertTrue(true);
-    }
 
     @Test
     public void shouldCreateNewUser() {
@@ -22,30 +18,31 @@ public class RegistrationControllerTest {
 
         Assert.assertEquals(true, loginResult.isSuccess());
         Assert.assertEquals(true, userDataBase.checkUser("testUser1"));
+    }
 
-
-    }  @Test
-    public void shouldNotCreateNewUser() {
+    @Test
+    public void shouldNotCreateNewUserWhenTooShortPasswordGiven() {
         UserDataBase userDataBase = new UserDataBase();
 
         Response loginResult = new RegistrationController(userDataBase).createUser("testUser1", "ss");
 
         Assert.assertEquals(false, loginResult.isSuccess());
-
-
+        Assert.assertEquals("Password too short", loginResult.getMessage());
+        Assert.assertEquals(false, userDataBase.checkUser("testUser1"));
     }
 
+    @Test
+    public void shouldNotCreateNewUserWhenUserAlreadyExist() {
+        UserDataBase userDataBase = new UserDataBase();
+        User user2 = new User("testUser1", "pass");
+        userDataBase.addUser(user2);
+        Response loginResult = new RegistrationController(userDataBase).createUser("testUser1", "pass");
+
+        Assert.assertEquals(false, loginResult.isSuccess());
+        Assert.assertEquals("User already exists", loginResult.getMessage());
     }
-    /**
-     * data OK & user not exits
-     * Response { success: true }
-     *
-     * data OK & user exits
-     * Response { success: false, msg: User already exist }
-     *
-     * data not OK
-     * Response { success: false, msg: Password too short }
-     */
+
+}
 
 
 
