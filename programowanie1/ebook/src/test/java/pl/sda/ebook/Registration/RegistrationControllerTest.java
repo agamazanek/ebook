@@ -33,7 +33,8 @@ public class RegistrationControllerTest {
 
     }@Test
     public void shouldCheckIfUserExist() {
-        User user=new User();
+     //   User user=new User();
+        
 
         Response loginResult = new RegistrationController().createUser("testUser1", "ss");
 
