@@ -1,24 +1,26 @@
 package pl.sda.ebook.UserData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UserDataBase {
- ArrayList  <User> users  =new ArrayList<User>();
 
- public ArrayList<User> getUsers() {
-  return users;
- }
+        HashMap <String, String> users = new HashMap<String, String>();
 
- public void setUsers(ArrayList<User> users) {
-  this.users = users;
- }
 
- public UserDataBase() {
-  this.users=users;
 
- }
+    public void addUser(String login, String passwd) {
 
- public Object add(User user) {
-  return null;
- }
+        users.put(login, passwd);
+
+    }
+
+
+    public boolean checkUser(String login) {
+        if(users.containsKey(login)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

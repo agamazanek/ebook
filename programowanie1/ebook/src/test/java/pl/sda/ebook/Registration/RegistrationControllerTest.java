@@ -2,6 +2,8 @@ package pl.sda.ebook.Registration;
 
 import org.junit.Assert;
 import org.junit.Test;
+import pl.sda.ebook.UserData.User;
+import pl.sda.ebook.UserData.UserDataBase;
 
 /**
  * Unit test for simple App.
@@ -14,29 +16,24 @@ public class RegistrationControllerTest {
 
     @Test
     public void shouldCreateNewUser() {
+        UserDataBase userDataBase = new UserDataBase();
 
-        Response loginResult = new RegistrationController().createUser("testUser1", "passw1");
+        Response loginResult = new RegistrationController(userDataBase).createUser("testUser1", "passw1");
 
         Assert.assertEquals(true, loginResult.isSuccess());
+        Assert.assertEquals(true, userDataBase.checkUser("testUser1"));
 
 
     }  @Test
     public void shouldNotCreateNewUser() {
+        UserDataBase userDataBase = new UserDataBase();
 
-        Response loginResult = new RegistrationController().createUser("testUser1", "ss");
-
-        Assert.assertEquals(false, loginResult.isSuccess());
-
-
-    }@Test
-    public void shouldCheckIfUserExist() {
-     //   User user=new User();
-        
-
-        Response loginResult = new RegistrationController().createUser("testUser1", "ss");
+        Response loginResult = new RegistrationController(userDataBase).createUser("testUser1", "ss");
 
         Assert.assertEquals(false, loginResult.isSuccess());
 
+
+    }
 
     }
     /**
@@ -50,5 +47,5 @@ public class RegistrationControllerTest {
      * Response { success: false, msg: Password too short }
      */
 
-}
+
 
